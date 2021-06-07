@@ -1,26 +1,88 @@
+/* html style */
+
 html {
-	background-color: #C993FF;
+	background-color: #eeeeee;
 }
 
-h1 {
-	font-size: 60px;
-	text-align: center;
-	text-shadow: 3px 3px 1px black;
+/* body style */
+
+body {
+  margin: 0;
 }
 
-h2 {
-	font-size: 30px;
-	text-align: center;
+/* header style */
+
+div.header {
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  text-align: center;
+  background-color: #dddddd;
+  box-sizing: border-box;
 }
 
-img {
-	display: block;
-	margin: 0 auto;
-	width: 300px;
+/* navigator style */
+
+div.nav {
+  width: 100%;
+  display: float;
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+  background-color: #dddddd;
+  overflow: hidden;
 }
 
-p {
-	font-size: 12px;
-	line-height: 2;
-	letter-spacing: 1px;
+div.nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+div.nav ul li {
+  float: left;
+  display: inline;
+}
+
+div.nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  padding: 14px;
+}
+
+div.nav ul li a:hover:not(:active) {
+  background-color: #cccccc;
+}
+
+div.nav ul li a:active {
+  background-color: #bbbbbb;
+}
+
+div.nav ul li:last-child {
+  float: right;
+}
+
+/* calender style */
+
+div.calender {
+  overflow-x: auto;
+}
+
+table.calender {
+  margin: 1rem auto;
+  width: 90%;
+  background-color: #efefef;
+  border-collapse: collapse;
+}
+
+table.calender th, td {
+  padding: 1rem 1rem;
+  text-align: center;
+  border: 1px solid lightgray;
+}
+
+table.calender td {
+  padding: 0 1rem 2rem 1rem;
 }
