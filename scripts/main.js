@@ -1,34 +1,38 @@
-let myImage = document.querySelector('img');
+const date = new Date();
 
-myImage.onclick = function() {
-	let src = myImage.getAttribute('src');
-	if (src === 'images/nurireneu.png'){
-		myImage.setAttribute('src','images/sharoda.png');
-	} else {
-		myImage.setAttribute('src','images/nurireneu.png');
-	}
+const currentYear = date.getFullYear();
+const currentMonth = date.getMonth();
+
+document.querySelector('.current-year-month').textContent = 
+  currentYear + '년 ' + (currentMonth + 1) + '월';
+
+const prevLast = new Date(currentYear, currentMonth, 0);
+const thisLast = new Date(currentYear, currentMonth + 1, 0);
+
+const plDate = prevLast.getDate();
+const plDay = prevLast.getDay();
+
+const tlDate = thisLast.getDate();
+const tlDay = thisLast.getDay();
+
+const prevDates = [];
+const thisDates = [...Array(tlDate + 1).keys()].slice(1);
+const nextDates = [];
+
+if (plDay !== 6) {
+  for (let i = 0; i < plDay + 1; i++) {
+    prevDates.unshift(plDate - i);
+  }
 }
 
-let myButton = document.querySelector('button');
-let myHeading = document.querySelector('h1');
-
-function setUserName() {
-	let myName = prompt('Please Enter your name...');
-	if (!myName || myName === null){
-		setUserName();
-	} else {
-		localStorage.setItem('name', myName);
-		myHeading.textContent = 'Pokemon image for ' + myName;
-	}
+for (let i = 1; i < 7 - tlDay; i++) {
+  nextDates.push(i);
 }
 
-myButton.onclick = function() {
-	setUserName();
-}
+const dates = prevDates.concat(thisDates, nextDates);
 
-if(!localStorage.getItem('name')){
-	setUserName();
-} else {
-	let storedName = localStorage.getItem('name');
-	myHeading.textContent = 'Pokemon image for ' + storedName;
-}
+dates.forEach((date, i) => {
+  dates[i] = '<div class="date">' + date + '</div>';
+})
+
+document.querySelector('.dates').innerHTML = dates.join('');
